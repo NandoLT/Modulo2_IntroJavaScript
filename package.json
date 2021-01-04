@@ -1,0 +1,20 @@
+{
+  "name": "worldcup_simulator",
+  "version": "1.0.0",
+  "description": "Footbal World Cup Simulator",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NandoLT/Modulo2_IntroJavaScript.git"
+  },
+  "author": "Fernando López Trejo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NandoLT/Modulo2_IntroJavaScript/issues"
+  },
+  "homepage": "https://github.com/NandoLT/Modulo2_IntroJavaScript#readme"
+}
