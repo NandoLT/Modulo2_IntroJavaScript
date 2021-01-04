@@ -1,5 +1,5 @@
+import {teamsWorldCup} from './teams.js'
 //Algoritmo de ordenación basado en RoundRobin
-
 /**
  * TEORÍA:
  * Equipos en dos filas 
@@ -17,21 +17,26 @@
  * como el resto al equipo que le vaya tocando en la rotación esa semana descansa
  */
 
-const teams = [ "A", "B", "C", "D", "E", /* "F" */]        //Equipos
-const planification = []                        //Array superior que contiene MatchDays
+//const teams = teamsWorldCup                     //Equipos
+const planification = []  
+let maxMatchDays = null                      //Array superior que contiene MatchDays
 const matchDays = []                            //Array de segundo nivel, contiene match
-/* const match = []                                //Array de tercer nivel */
-let   maxMatchDays = teams.length - 1           //Número de jornadas
 let   firstTeams = []                           //Primera fila de equipos
 let   secondTeams = []                          //Segunda fila de equipos
 
-
+/**
+ * 
+ * @param {*} teams 
+ */
+export function maxMatchDaysCalc(teams){
+    maxMatchDays = teams.length - 1 
+}
 /**
  * @description Añadimos un elemento null al final del array teams
  *              para en caso de ser impar el número de elementos, 
  *              hacer que este sea par
  */
-function roundOdd() {
+function roundOdd(teams) {
     teams.push(null)
     maxMatchDays++
 }
@@ -47,6 +52,9 @@ function splitTeams(teams){
     secondTeams = teams.splice ((teams.length / 2) - 1, teams.length).reverse()
 }
 
+/**
+ * @description Rotamos los elementos de los arrays entre los arrays
+ */
 function rotateTeams(){
     secondTeams.push(firstTeams[firstTeams.length -1])
     firstTeams.pop()
@@ -61,7 +69,7 @@ function rotateTeams(){
  *              Como el número de jornadas es N-1, si el número de equipos es impar
  *              y vamos a añadir un elemento "null", corregimos el maxMatchDays sumando + 1
  */
-function initPlanification() {
+function initPlanification(teams) {
     if (teams.length % 2 !== 0){
         maxMatchDays++
     }
@@ -76,13 +84,13 @@ function initPlanification() {
  * @description Establecemos las jornadas y los partidos a disputar.
  *              
  */
-function setPlanification(teams) {
-    
+export default function setPlanification(teams) {
+    maxMatchDaysCalc(teams)
     if (teams.length % 2 !== 0){                // Comprobamos que el número de equipos
-        roundOdd()                              // es par en caso contrario -> roundOdd()
+        roundOdd(teams)                              // es par en caso contrario -> roundOdd()
     }
     const teamsCopy = [...teams]
-    initPlanification()                         // Componemos la matriz de arrays
+    initPlanification(teams)                         // Componemos la matriz de arrays
     splitTeams(teams)                           // Dividimos los equipos en dos bloques
 
     for(let i = 0; i < maxMatchDays; i++) {     //En el doble for vamos rellenando el bloque de arrays planificaction->MatchDays->Match
@@ -95,7 +103,3 @@ function setPlanification(teams) {
     }
     return planification
 }
-
-
-
-/* console.log(setPlanification(teams)) */
