@@ -26,11 +26,29 @@ let   secondTeams = []                          //Segunda fila de equipos
 
 /**
  * 
- * @param {*} teams 
+ * @param {Object} groups 
+ * @description Nos creamos una copia del objeto Groups para mantener los datos
+ */
+export function groupsCopier(groups){
+    let groupCopy = {}
+    for(let key in groups) {
+        let group = []
+        groupCopy[key] = group
+        for(let a = 0; a < groups[key].length; a++) {
+            groupCopy[key].push(groups[key][a])
+        }
+    }
+    return groupCopy
+}
+
+/**
+ * 
+ * @param {Array} teams 
  */
 export function maxMatchDaysCalc(teams){
     maxMatchDays = teams.length - 1 
 }
+
 /**
  * @description Añadimos un elemento null al final del array teams
  *              para en caso de ser impar el número de elementos, 
@@ -42,11 +60,12 @@ function roundOdd(teams) {
 }
 
 /**
- * @param {array} teams 
+ * @param {Array} teams 
  * @description Separamos los equispos en dos arrays.
  *              El segundo lo invertimos. De esta forma obtenemos
  *              la configuración para poder hacer las rotaciones
  */
+
 function splitTeams(teams){
     firstTeams = teams.splice(0, teams.length / 2)
     secondTeams = teams.splice ((teams.length / 2) - 1, teams.length).reverse()
@@ -61,6 +80,7 @@ function rotateTeams(){
     firstTeams.splice(1, 0, secondTeams[0])
     secondTeams.shift()
 }
+
 /**
  * @description Establecemos la estructura de datos:
  *              Array principal "planification" que contendrá
@@ -80,17 +100,17 @@ function initPlanification(teams) {
 
 /**
  *  
- * @param {array} teams 
+ * @param {Array} teams 
  * @description Establecemos las jornadas y los partidos a disputar.
  *              
  */
 export default function setPlanification(teams) {
     maxMatchDaysCalc(teams)
     if (teams.length % 2 !== 0){                // Comprobamos que el número de equipos
-        roundOdd(teams)                              // es par en caso contrario -> roundOdd()
+        roundOdd(teams)                         // es par en caso contrario -> roundOdd()
     }
     const teamsCopy = [...teams]
-    initPlanification(teams)                         // Componemos la matriz de arrays
+    initPlanification(teams)                     // Componemos la matriz de arrays
     splitTeams(teams)                           // Dividimos los equipos en dos bloques
 
     for(let i = 0; i < maxMatchDays; i++) {     //En el doble for vamos rellenando el bloque de arrays planificaction->MatchDays->Match

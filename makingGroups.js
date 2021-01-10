@@ -1,13 +1,13 @@
 
 const groups = {
     A: [],
-    B: [],
+    /* B: [],
     C: [],
     D: [],
     E: [],
     F: [],
     G: [],
-    H: []
+    H: [] */
 }
 let start= 0
 let end = 4

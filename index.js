@@ -1,7 +1,9 @@
 import {teamsWorldCup} from './teams.js'
+import {groupsCopier} from './planification.js'
 import {maxMatchDaysCalc} from './planification.js'
-import setPlanification from './planification.js'
+/* import setPlanification from './planification.js' */
 import makingGroups from './makingGroups.js'
+import {groupsMatchs} from './outputData.js'
 /**
  * Desde index.js lanzamos la ejección de una srie de funciones que:
  *  1.- Dado un conjunto de equipos (32 equipos clasificados para el mundial)
@@ -16,33 +18,16 @@ import makingGroups from './makingGroups.js'
  *      tercero y cuerto.
  */
 
-const LOCAL = 0 
-const AWAY = 1
+let planificationToPlay = null
 
-//Formamos los grupos con los 32 equipos. De la A a la H
+//Formamos los grupos con los 32 equipos. De la A a la H y nos cremamos una copia de seguridad
 const groups = makingGroups(teamsWorldCup)
+let groupsCopy = {}
+groupsCopy = groupsCopier(groups)
+
 
 //Planificamos las jornadas para cada grupo. Mostramos grupos y jornadas por pantalla
-maxMatchDaysCalc(groups.A) //
-for(let key in groups) {
-    console.log(' _________')
-    console.log('|GRUPO', key,' |')
-    console.log(' ---------')
-    groups[key].forEach(team => console.log(team))
+maxMatchDaysCalc(groups.A) 
+groupsMatchs(groupsCopy)
 
-    const planification = setPlanification(groups[key])
-    for(let i = 0; i < planification.length; i++){
-        console.log(' ')
-        console.log('JORNADA', i+1)
-        console.log('=======')
-        for (let j = 0; j < 2; j++) {
-            console.log(`${planification[i][j][LOCAL]} VS ${planification[i][j][AWAY]}`)
-        }
-    }
-}
 
-//Jugamos los partidos
-/**
- * necesitamos equipo, puntos, goles a favor, goles en contra, diferencia de goles
- * mostrar con log.table
- */
