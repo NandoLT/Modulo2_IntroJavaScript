@@ -9,12 +9,12 @@ const africanTeams = ["Egipto", "Arabia Saudí", "Marruecos", "Irán", "Nigeria"
 const oceaniaTeams = ["Australia"]
 
 export const teamsWorldCup =[
-    /* ...europeanTeams,
+    ...europeanTeams,
     ...americanTeams,
     ...asianTeams,
     ...africanTeams,
-    ...oceaniaTeams */
-    'España','Francia','Portugal','Dinamarca'
+    ...oceaniaTeams
+    /* 'España','Francia','Portugal','Dinamarca', 'Rusia','Uruguay','Australia','Egipto' */
 ]
 
 
