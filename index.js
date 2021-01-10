@@ -1,9 +1,8 @@
 import {teamsWorldCup} from './teams.js'
 import {groupsCopier} from './planification.js'
 import {maxMatchDaysCalc} from './planification.js'
-/* import setPlanification from './planification.js' */
 import makingGroups from './makingGroups.js'
-import {groupsMatchs} from './outputData.js'
+import {groupsMatchs} from './groupRound.js'
 /**
  * Desde index.js lanzamos la ejección de una srie de funciones que:
  *  1.- Dado un conjunto de equipos (32 equipos clasificados para el mundial)
@@ -18,8 +17,7 @@ import {groupsMatchs} from './outputData.js'
  *      tercero y cuerto.
  */
 
-let planificationToPlay = null
-
+let teamsNextRound = null
 //Formamos los grupos con los 32 equipos. De la A a la H y nos cremamos una copia de seguridad
 const groups = makingGroups(teamsWorldCup)
 let groupsCopy = {}
@@ -28,6 +26,7 @@ groupsCopy = groupsCopier(groups)
 
 //Planificamos las jornadas para cada grupo. Mostramos grupos y jornadas por pantalla
 maxMatchDaysCalc(groups.A) 
-groupsMatchs(groupsCopy)
+teamsNextRound = groupsMatchs(groupsCopy)
+console.log(teamsNextRound)
 
 
