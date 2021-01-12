@@ -7,8 +7,8 @@ let teamsdata = null
 let match = []
 let journey = 1
 let teamsNextRound = []
-const LOCAL = 0 
-const AWAY = 1
+export const LOCAL = 0 
+export const AWAY = 1
 
 export function groupsMatchs(groups) {
     for(let key in groups) {

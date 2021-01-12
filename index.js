@@ -3,6 +3,7 @@ import {groupsCopier} from './planification.js'
 import {maxMatchDaysCalc} from './planification.js'
 import makingGroups from './makingGroups.js'
 import {groupsMatchs} from './groupRound.js'
+import teamsDistribution from './finalRound.js'
 /**
  * Desde index.js lanzamos la ejección de una srie de funciones que:
  *  1.- Dado un conjunto de equipos (32 equipos clasificados para el mundial)
@@ -27,6 +28,6 @@ groupsCopy = groupsCopier(groups)
 //Planificamos las jornadas para cada grupo. Mostramos grupos y jornadas por pantalla
 maxMatchDaysCalc(groups.A) 
 teamsNextRound = groupsMatchs(groupsCopy)
-console.log(teamsNextRound)
 
-
+//Pasamos los equipos finalistas al fichero de Ronda Final para ejecute todos los niveles
+teamsDistribution(teamsNextRound)

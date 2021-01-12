@@ -1,4 +1,4 @@
-import {teamsWorldCup} from './teams.js'
+/* import {teamsWorldCup} from './teams.js' */
 //Algoritmo de ordenación basado en RoundRobin
 /**
  * TEORÍA:
