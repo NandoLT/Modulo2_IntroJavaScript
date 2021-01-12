@@ -21,9 +21,9 @@ function customizeTeam(teamName) {
         goalsAgainst: 0,
     }
 }
-function goalsForAgainst(goalsFor, goalsAgainst) {
+/* function goalsForAgainst(goalsFor, goalsAgainst) {
     return goalsFor - goalsAgainst
-}
+} */
 function  generateGoals() {
     return Math.round(Math.random() * 10)
 }
