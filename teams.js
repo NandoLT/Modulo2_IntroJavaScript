@@ -14,8 +14,4 @@ export const teamsWorldCup =[
     ...asianTeams,
     ...africanTeams,
     ...oceaniaTeams
-    /* 'España','Francia','Portugal','Dinamarca', 'Rusia','Uruguay','Australia','Egipto' */
 ]
-
-
-// Para meter los equipos en los 8 grupos de forma aleatoria lo primero será mezclar el array de equipos y luego ir asignando de a uno a cada grupo...

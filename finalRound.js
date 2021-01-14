@@ -33,7 +33,6 @@ export default  function teamsDistribution(finalistTeams) {
     let teamsB = []
     let posA = 0 // posA y PosB se usan en teamDistribution para alternando la selección de equipos
     let posB = 1
-
     for(const teams of finalistTeams) {
         teamsA.push(teams[posA])
         teamsB.push(teams[posB])
@@ -173,7 +172,6 @@ function  generateGoals() {
 function playMatch(teams) {
     homeGoals = generateGoals()
     awayGoals = generateGoals()
-
     if(homeGoals == awayGoals) {
         playExtension(teams)
     } else if(homeGoals > awayGoals) {
@@ -217,7 +215,6 @@ function playPenalties(teams) {
     let localTotal = checkPenalties(localPenalties)
     let awayTotal = checkPenalties(awayPenalties)
     localTotal > awayTotal ?  win = teams[LOCAL] :  win = teams[AWAY]
-
     if(localTotal == awayTotal) {
         suddenDeath(teams, localPenalties, awayPenalties)
     } else {
@@ -243,7 +240,6 @@ function suddenDeath(teams, localPenalties, awayPenalties){
     do{
         shootA = shootPenalty()
         shootB = shootPenalty()
-
         if(shootA > shootB) {
             localPenalties.push(shootA)
             awayPenalties.push(shootB)
@@ -263,7 +259,6 @@ function suddenDeath(teams, localPenalties, awayPenalties){
             awayPenalties.push(shootB)
         }
     }while(shootA == shootB)
-
     return win
 }
 

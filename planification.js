@@ -1,4 +1,3 @@
-/* import {teamsWorldCup} from './teams.js' */
 //Algoritmo de ordenación basado en RoundRobin
 /**
  * TEORÍA:
@@ -17,12 +16,12 @@
  * como el resto al equipo que le vaya tocando en la rotación esa semana descansa
  */
 
-//const teams = teamsWorldCup                     //Equipos
+
 const planification = []  
-let maxMatchDays = null                      //Array superior que contiene MatchDays
-const matchDays = []                            //Array de segundo nivel, contiene match
-let   firstTeams = []                           //Primera fila de equipos
-let   secondTeams = []                          //Segunda fila de equipos
+let maxMatchDays = null     //Array superior que contiene MatchDays
+const matchDays = []        //Array de segundo nivel, contiene match
+let   firstTeams = []       //Primera fila de equipos
+let   secondTeams = []      //Segunda fila de equipos
 
 /**
  * 

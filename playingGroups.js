@@ -21,12 +21,11 @@ function customizeTeam(teamName) {
         goalsAgainst: 0,
     }
 }
-/* function goalsForAgainst(goalsFor, goalsAgainst) {
-    return goalsFor - goalsAgainst
-} */
+
 function  generateGoals() {
     return Math.round(Math.random() * 10)
 }
+
 function goalDistribution(homeGoals, awayGoals, equipo, localTeam) {
         if(localTeam) {
             equipo.goalsFor += homeGoals
@@ -36,6 +35,7 @@ function goalDistribution(homeGoals, awayGoals, equipo, localTeam) {
             equipo.goalsAgainst += homeGoals
         }
 }
+
 export function playMatch(teams, teamsData) {
     let localTeam= null
     let winningTeam = null
