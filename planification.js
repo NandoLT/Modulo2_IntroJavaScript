@@ -64,7 +64,6 @@ function roundOdd(teams) {
  *              El segundo lo invertimos. De esta forma obtenemos
  *              la configuración para poder hacer las rotaciones
  */
-
 function splitTeams(teams){
     firstTeams = teams.splice(0, teams.length / 2)
     secondTeams = teams.splice ((teams.length / 2) - 1, teams.length).reverse()

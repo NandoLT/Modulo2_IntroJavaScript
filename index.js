@@ -5,7 +5,7 @@ import makingGroups from './makingGroups.js'
 import {groupsMatchs} from './groupRound.js'
 import teamsDistribution from './finalRound.js'
 /**
- * Desde index.js lanzamos la ejección de una srie de funciones que:
+ * Desde index.js lanzamos la ejecución de una serie de funciones que:
  *  1.- Dado un conjunto de equipos (32 equipos clasificados para el mundial)
  *      estos se distribuiran en grupos desde la A hasta la H con cuatro equipos por grupo.
  *      Estos jugaran una liguilla de todos contra todos (tres jornadas por grupo).

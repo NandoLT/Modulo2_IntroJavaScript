@@ -10,6 +10,14 @@ let teamsNextRound = []
 export const LOCAL = 0 
 export const AWAY = 1
 
+/**
+ * 
+ * @param {object} groupsInfoMatch 
+ * @description Pasamos un objeto con los grupos, cada grupo (clave), 
+ *              contiene un array con los equipos de ese grupo,
+ *              Mostramos información de composición de cada grupo, 
+ *              así como de la distribución de partidos por jornadas. 
+ */
 export function infoMatchs(groupsInfoMatch) {
     console.log('GRUPOS Y EQUIPOS')
     console.log('================')
@@ -31,6 +39,17 @@ export function infoMatchs(groupsInfoMatch) {
     }
 }
 
+/**
+ *  
+ * @param {Object} groups 
+ * @param {Object} groupsInfoMatch 
+ * @returns {Array} Equipos para la ronda de eliminatorias.
+ * @description Ejecutamos en primer lugar infoMatchs, para ver toda la 
+ *              información de grupos y jornadas.
+ *              Seguidamente disputamos los partidos de cada jornada y almacenamos los
+ *              datos de los partidos (equipos, goles...), para poder mostrar posteriormente
+ *              los resumenes de la jornada
+ */
 export function groupsMatchs(groups, groupsInfoMatch) {
     infoMatchs(groupsInfoMatch)
     console.log('')
