@@ -10,12 +10,38 @@ let teamsNextRound = []
 export const LOCAL = 0 
 export const AWAY = 1
 
-export function groupsMatchs(groups) {
+export function infoMatchs(groupsInfoMatch) {
+    console.log('GRUPOS Y EQUIPOS')
+    console.log('================')
+    console.log('')
+    for(let key in groupsInfoMatch) {
+        console.log(' _________')
+        console.log('|GRUPO', key,' |')
+        console.log(' ---------')
+        groupsInfoMatch[key].forEach(team => console.log(team))
+        planification = setPlanification(groupsInfoMatch[key])
+        for(let i = 0; i < planification.length; i++){
+            console.log(' ')
+            console.log('JORNADA', i+1)
+            console.log('=======')
+            for (let j = 0; j < 2; j++) {
+                console.log(`${planification[i][j][LOCAL]} vs ${planification[i][j][AWAY]}`)
+            }
+        }
+    }
+}
+
+export function groupsMatchs(groups, groupsInfoMatch) {
+    infoMatchs(groupsInfoMatch)
+    console.log('')
+    console.log('=================================')
+    console.log('====== COMIENZA EL MUNDIAL ======')
+    console.log('=================================')
+    console.log('')
     for(let key in groups) {
         console.log(' _________')
         console.log('|GRUPO', key,' |')
         console.log(' ---------')
-        groups[key].forEach(team => console.log(team))
         const groupsToGroupPhase = [...groups[key]]
         planification = setPlanification(groups[key])
         teamsdata = setupTeams(groupsToGroupPhase)
@@ -30,7 +56,6 @@ export function groupsMatchs(groups) {
         orderSummary(teamsdata)
         }
     }
-
     return teamsNextRound
 }
 

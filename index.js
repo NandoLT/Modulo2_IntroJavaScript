@@ -21,13 +21,14 @@ import teamsDistribution from './finalRound.js'
 let teamsNextRound = null
 //Formamos los grupos con los 32 equipos. De la A a la H y nos cremamos una copia de seguridad
 const groups = makingGroups(teamsWorldCup)
-let groupsCopy = {}
-groupsCopy = groupsCopier(groups)
+let groupsInfoMatch = {}
+groupsInfoMatch = groupsCopier(groups)
 
 
 //Planificamos las jornadas para cada grupo. Mostramos grupos y jornadas por pantalla
+//Jugamos los partidos y recogemos equipos para la fase eliminatoria
 maxMatchDaysCalc(groups.A) 
-teamsNextRound = groupsMatchs(groupsCopy)
+teamsNextRound = groupsMatchs(groups, groupsInfoMatch)
 
-//Pasamos los equipos finalistas al fichero de Ronda Final para ejecute todos los niveles
+//Pasamos los equipos finalistas al fichero de Ronda Final para ejecute todos las rondas
 teamsDistribution(teamsNextRound)

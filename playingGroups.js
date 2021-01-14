@@ -1,4 +1,4 @@
-// Se juega la fase grupos
+// Se juegan los partidos de la fase grupos
 
 
 export function setupTeams(teamNames) {
