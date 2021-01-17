@@ -19,7 +19,7 @@ import teamsDistribution from './finalRound.js'
  */
 
 let teamsNextRound = null
-//Formamos los grupos con los 32 equipos. De la A a la H y nos cremamos una copia de seguridad
+//Formamos los grupos con los 32 equipos. De la A a la H y nos creamos una copia de seguridad
 const groups = makingGroups(teamsWorldCup)
 let groupsInfoMatch = {}
 groupsInfoMatch = groupsCopier(groups)

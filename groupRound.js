@@ -3,10 +3,8 @@ import {setupTeams} from './playingGroups.js'
 import {playMatch} from './playingGroups.js'
 
 let planification = null
-let teamsdata = null
-let match = []
-let journey = 1
 let teamsNextRound = []
+let journey = 1
 export const LOCAL = 0 
 export const AWAY = 1
 
@@ -48,9 +46,12 @@ export function infoMatchs(groupsInfoMatch) {
  *              información de grupos y jornadas.
  *              Seguidamente disputamos los partidos de cada jornada y almacenamos los
  *              datos de los partidos (equipos, goles...), para poder mostrar posteriormente
- *              los resumenes de la jornada
+ *              los resumenes de la jornada.
+ *              Al final de la ejeción -> orderSummary que nos ordenara la clasificación 
  */
 export function groupsMatchs(groups, groupsInfoMatch) {
+    let teamsdata = null
+    let match = []
     infoMatchs(groupsInfoMatch)
     console.log('')
     console.log('=================================')
@@ -78,6 +79,13 @@ export function groupsMatchs(groups, groupsInfoMatch) {
     return teamsNextRound
 }
 
+/**
+ * 
+ * @param {Object} teamsData 
+ * @description Mostramos por pantalla el resumen de la jornada
+ *              llamamos al final a la función takeToNextRound para seleccionar
+ *              los dos primeros equipos de cada grupo
+ */
 function summary(teamsData) {
     console.table(teamsData.map(team => {
         return {
@@ -94,6 +102,15 @@ function summary(teamsData) {
     takeToNextRound(teamsData)
 }
 
+/**
+ * 
+ * @param {Object} teamsdata 
+ * @description Ordenamos la clasificación:
+ *                 - Por puntos
+ *                 - Si empatan, tendremos en cuenta la diferencia de goles.
+ *               Al final de la ejecución -> summary, mostrando el resumen de la jornada 
+ *               con la clasificación ya ordenada
+ */
 function orderSummary(teamsdata) {
     teamsdata.sort(function(teamA, teamB) {
         if(teamA.points > teamB.points) {
@@ -115,6 +132,14 @@ function orderSummary(teamsdata) {
     summary(teamsdata)
 }
 
+/**
+ * 
+ * @param {Object} teamdata 
+ * @description La función se va ejecutando en cada jornada pero no tiene
+ *              en cuenta la clasificación hasta la última, momento en el que itera
+ *              y toma los dos primeros equipos del grupo que este en ese momento en juego.
+ *              Hacemos lo mismo con el resto de grupos que van entrando.
+ */
 function takeToNextRound(teamdata) {
     let teams = []
     if(journey == 3){

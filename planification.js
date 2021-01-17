@@ -43,12 +43,15 @@ export function groupsCopier(groups){
 /**
  * 
  * @param {Array} teams 
+ * @description calculamos el número de jornadas
  */
 export function maxMatchDaysCalc(teams){
     maxMatchDays = teams.length - 1 
 }
 
 /**
+ * 
+ * @param {Array} teams
  * @description Añadimos un elemento null al final del array teams
  *              para en caso de ser impar el número de elementos, 
  *              hacer que este sea par
@@ -59,6 +62,7 @@ function roundOdd(teams) {
 }
 
 /**
+ * 
  * @param {Array} teams 
  * @description Separamos los equispos en dos arrays.
  *              El segundo lo invertimos. De esta forma obtenemos
@@ -71,6 +75,7 @@ function splitTeams(teams){
 
 /**
  * @description Rotamos los elementos de los arrays entre los arrays
+ *              firstTeams y secondTeams
  */
 function rotateTeams(){
     secondTeams.push(firstTeams[firstTeams.length -1])
@@ -80,6 +85,8 @@ function rotateTeams(){
 }
 
 /**
+ * 
+ * @param {Array} teams
  * @description Establecemos la estructura de datos:
  *              Array principal "planification" que contendrá
  *              un array para cada jornada (matchDays) y estas

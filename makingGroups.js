@@ -10,21 +10,28 @@ const groups = {
     H: []
 }
 let start= 0
-let end = 4
+let teamsByGroup = 4
 
 function shuffleTeams(teams) {
     let shuffTeams = teams.sort(() => Math.random() - 0.5) 
     return shuffTeams
 }
 
+/**
+ *  
+ * @param {array} teams 
+ * @description Repartimos los 32 equipos en  bloques de 4. Ante de esto
+ *              mezclamos el array de equipos para que en cada ejecución   
+ *              el sistema de grupos sea diferente.
+ */
 export default function makingGroups(teams) {
     const teamsCopy = shuffleTeams(teams)
     for(let key in groups) {
-        for(let i = 0; i < teamsCopy.length / 4; i++) {
-            groups[key] = teamsCopy.slice(start, end)
+        for(let i = 0; i < teamsCopy.length / teamsByGroup; i++) {
+            groups[key] = teamsCopy.slice(start, teamsByGroup)
         }
-        start = end
-        end += 4
+        start = teamsByGroup
+        teamsByGroup += 4
     }
     return groups
 }
